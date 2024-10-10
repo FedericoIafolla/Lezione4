@@ -99,4 +99,10 @@ public class EventoDAO {
         entityManager.close();
         return gare;
     }
+
+    public void close() {
+        if (entityManagerFactory != null) {
+            entityManagerFactory.close();
+        }
+    }
 }

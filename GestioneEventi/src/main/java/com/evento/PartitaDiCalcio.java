@@ -13,9 +13,7 @@ import java.util.Date;
 public class PartitaDiCalcio extends Evento {
 
     private String squadraCasa;
-
     private String squadraTrasferta;
-
     private String esito;
 
     public PartitaDiCalcio() {
