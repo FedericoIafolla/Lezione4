@@ -1,0 +1,7 @@
+package com.evento;
+
+public enum GenereConcerto {
+    CLASSICO,
+    ROCK,
+    POP,
+}

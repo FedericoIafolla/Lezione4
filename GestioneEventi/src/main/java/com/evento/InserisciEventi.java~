@@ -1,0 +1,30 @@
+
+import org.hibernate.Session;
+import org.hibernate.Transaction;
+import java.time.LocalDate;
+
+public class InserisciEventi {
+    public static void main(String[] args) {
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        Transaction transaction = session.beginTransaction();
+
+        try {
+            Evento evento1 = new Evento("Concerto di Musica Rock", "Un concerto dal vivo con band locali e artisti emergenti.", LocalDate.of(2024, 11, 15), 500, "Musica");
+            Evento evento2 = new Evento("Fiera dell'Artigianato", "Mostra e vendita di prodotti artigianali locali.", LocalDate.of(2024, 12, 1), 300, "Fiera");
+            Evento evento3 = new Evento("Workshop di Cucina Italiana", "Impara a cucinare piatti tipici della cucina italiana.", LocalDate.of(2024, 11, 20), 20, "Cibo");
+            Evento evento4 = new Evento("Corso di Fotografia per Principianti", "Un corso per imparare le basi della fotografia digitale.", LocalDate.of(2024, 11, 30), 15, "Formazione");
+
+            session.save(evento1);
+            session.save(evento2);
+            session.save(evento3);
+            session.save(evento4);
+
+            transaction.commit();
+        } catch (Exception e) {
+            if (transaction != null) transaction.rollback();
+            e.printStackTrace();
+        } finally {
+            session.close();
+        }
+    }
+}
